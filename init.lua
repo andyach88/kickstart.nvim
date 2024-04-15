@@ -755,7 +755,18 @@ require('lazy').setup({
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
+      vim.cmd.hi 'WinSeparator guifg=black guibg=black'
+      vim.cmd.hi 'Vertsplit guifg=black guibg=black'
     end,
+    opts = {
+      on_colors = function(colors)
+        colors.bg_dark = '#000000'
+        colors.bg_float = '#000000'
+        colors.bg_popup = '#000000'
+        colors.bg_sidebar = '#000000'
+        colors.bg_statusline = '#000000'
+      end,
+    },
   },
 
   -- Highlight todo, notes, etc in comments
