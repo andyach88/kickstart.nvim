@@ -3,6 +3,14 @@
 vim.g.mapleader = ','
 vim.g.maplocalleader = ','
 
+-- Set up nvim-tree
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { desc = '[T]ree [T]oggle' })
+vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = '[T]ree [F]ocus' })
+vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]here' })
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
 
