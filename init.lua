@@ -11,6 +11,28 @@ vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { desc = '[T]ree [T]ogg
 vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = '[T]ree [F]ocus' })
 vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]here' })
 
+-- Replace is like change and then put
+
+vim.keymap.set('n', 'riW', ':let @r=@"<CR>diW"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'riw', ':let @r=@"<CR>diw"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'rip', ':let @r=@"<CR>dip"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ri[', ':let @r=@"<CR>di["rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ri(', ':let @r=@"<CR>di("rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ri{', ':let @r=@"<CR>di{"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ri<', ':let @r=@"<CR>di<"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ri"', ':let @r=@"<CR>di""rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', "ri'", ':let @r=@"<CR>di\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+
+vim.keymap.set('n', 'raW', ':let @r=@"<CR>daW"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'raw', ':let @r=@"<CR>daw"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'rap', ':let @r=@"<CR>dap"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ra[', ':let @r=@"<CR>da["rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ra(', ':let @r=@"<CR>da("rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ra{', ':let @r=@"<CR>da{"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ra<', ':let @r=@"<CR>da<"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', 'ra"', ':let @r=@"<CR>da""rP:let @"=@r<CR>', { desc = '[R]eplace' })
+vim.keymap.set('n', "ra'", ':let @r=@"<CR>da\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+--
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
 
