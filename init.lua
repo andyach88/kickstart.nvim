@@ -32,6 +32,18 @@ vim.keymap.set('n', 'ra{', ':let @r=@"<CR>da{"rP:let @"=@r<CR>', { desc = '[R]ep
 vim.keymap.set('n', 'ra<', ':let @r=@"<CR>da<"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'ra"', ':let @r=@"<CR>da""rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', "ra'", ':let @r=@"<CR>da\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
+
+math.randomseed(os.time())
+function GenRandomSequence()
+  local template = 'xxxxxxxx'
+  local uu = string.gsub(template, '[x]', function()
+    return string.format('%x', math.random(0, 0xf))
+  end)
+  vim.fn.setreg('"', uu)
+end
+
+vim.keymap.set('n', '<leader>uu', GenRandomSequence, { desc = 'Random sequence' })
+
 --
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
