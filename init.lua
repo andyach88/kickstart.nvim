@@ -33,13 +33,17 @@ vim.keymap.set('n', 'ra<', ':let @r=@"<CR>da<"rP:let @"=@r<CR>', { desc = '[R]ep
 vim.keymap.set('n', 'ra"', ':let @r=@"<CR>da""rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', "ra'", ':let @r=@"<CR>da\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 
+vim.keymap.set('i', '<leader>p', '<ESC>pA', { desc = 'Put while in insert' })
+
 math.randomseed(os.time())
 function GenRandomSequence()
   local template = 'xxxxxxxx'
-  local uu = string.gsub(template, '[x]', function()
-    return string.format('%x', math.random(0, 0xf))
+  local letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }
+
+  local seq = string.gsub(template, '[x]', function()
+    return letters[math.random(1, 26)]
   end)
-  vim.fn.setreg('"', uu)
+  vim.fn.setreg('"', seq)
 end
 
 vim.keymap.set('n', '<leader>uu', GenRandomSequence, { desc = 'Random sequence' })
