@@ -12,7 +12,6 @@ vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = '[T]ree [F]ocus
 vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]here' })
 
 -- Replace is like change and then put
-
 vim.keymap.set('n', 'riW', ':let @r=@"<CR>diW"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'riw', ':let @r=@"<CR>diw"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'rip', ':let @r=@"<CR>dip"rP:let @"=@r<CR>', { desc = '[R]eplace' })
@@ -33,21 +32,38 @@ vim.keymap.set('n', 'ra<', ':let @r=@"<CR>da<"rP:let @"=@r<CR>', { desc = '[R]ep
 vim.keymap.set('n', 'ra"', ':let @r=@"<CR>da""rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', "ra'", ':let @r=@"<CR>da\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 
-vim.keymap.set('i', '<leader>p', '<ESC>pA', { desc = 'Put while in insert' })
+vim.keymap.set('i', '<leader>p', '<ESC>pea', { desc = 'Put while in insert' })
 
 math.randomseed(os.time())
 function GenRandomSequence()
   local template = 'xxxxxxxx'
   local letters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' }
 
-  local seq = string.gsub(template, '[x]', function()
+  return string.gsub(template, '[x]', function()
     return letters[math.random(1, 26)]
   end)
+end
+
+function SetRandomSequence()
+  local seq = GenRandomSequence()
   vim.fn.setreg('"', seq)
 end
 
-vim.keymap.set('n', '<leader>uu', GenRandomSequence, { desc = 'Random sequence' })
+vim.keymap.set('n', '<leader>uu', SetRandomSequence, { desc = 'Random sequence' })
 
+vim.keymap.set('n', '<leader>gx', ':wa<CR>:!go run .<CR>', { desc = '[G]o [X]ecute' })
+
+-- Define a function to print "hello world" to the current line in the current buffer
+function Go_log()
+  -- Get the current buffer
+  local buf = vim.api.nvim_get_current_buf()
+  -- Get the current line number (0-indexed)
+  local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local seq = GenRandomSequence()
+  vim.api.nvim_buf_set_lines(buf, line + 1, line + 1, false, { 'log.Printf("tid=%s lid=' .. seq .. ' MESSAGE", tid)' })
+  vim.api.nvim_win_set_cursor(0, { line + 2, 32 })
+end
+vim.keymap.set('n', '<leader>gl', Go_log, { desc = '[G]o [L]og' })
 --
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
