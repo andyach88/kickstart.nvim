@@ -33,7 +33,7 @@ vim.keymap.set('n', 'ra<', ':let @r=@"<CR>da<"rP:let @"=@r<CR>', { desc = '[R]ep
 vim.keymap.set('n', 'ra"', ':let @r=@"<CR>da""rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', "ra'", ':let @r=@"<CR>da\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 
-vim.keymap.set('i', '<leader>p', '<ESC>pea', { desc = 'Put while in insert' })
+vim.keymap.set('i', '<leader>p', '<ESC>pa', { desc = 'Put while in insert' })
 
 math.randomseed(os.time())
 function GenRandomSequence()
