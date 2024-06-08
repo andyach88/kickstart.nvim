@@ -54,6 +54,18 @@ vim.keymap.set('n', '<leader>uu', SetRandomSequence, { desc = 'Random sequence' 
 
 vim.keymap.set('n', '<leader>gx', ':wa<CR>:!go run .<CR>', { desc = '[G]o [X]ecute' })
 
+-- Define a function to print "hello world" to the current line in the current buffer
+function Go_log()
+  -- Get the current buffer
+  local buf = vim.api.nvim_get_current_buf()
+  -- Get the current line number (0-indexed)
+  local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local seq = GenRandomSequence()
+  vim.api.nvim_buf_set_lines(buf, line + 1, line + 1, false, { 'log.Printf("tid=%s lid=' .. seq .. ' MESSAGE", tid)' })
+  vim.api.nvim_win_set_cursor(0, { line + 2, 32 })
+end
+vim.keymap.set('n', '<leader>gl', Go_log, { desc = '[G]o [L]og' })
+
 -- Use capital M for creating marks and lowercase m for jumping to them
 -- Also only use marks to jump between files, so use capital letters for the marks
 vim.keymap.set('n', 'Ma', 'mA', {})
@@ -109,17 +121,8 @@ vim.keymap.set('n', 'my', "'Y", {})
 vim.keymap.set('n', 'Mz', 'mZ', {})
 vim.keymap.set('n', 'mz', "'Z", {})
 
--- Define a function to print "hello world" to the current line in the current buffer
-function Go_log()
-  -- Get the current buffer
-  local buf = vim.api.nvim_get_current_buf()
-  -- Get the current line number (0-indexed)
-  local line = vim.api.nvim_win_get_cursor(0)[1] - 1
-  local seq = GenRandomSequence()
-  vim.api.nvim_buf_set_lines(buf, line + 1, line + 1, false, { 'log.Printf("tid=%s lid=' .. seq .. ' MESSAGE", tid)' })
-  vim.api.nvim_win_set_cursor(0, { line + 2, 32 })
-end
-vim.keymap.set('n', '<leader>gl', Go_log, { desc = '[G]o [L]og' })
+vim.keymap.set('n', '<leader>bl', ':Gitsigns blame_line<CR>', { desc = '[B]lame [L]ine}' })
+
 --
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = false
