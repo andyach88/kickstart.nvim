@@ -12,6 +12,7 @@ vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = '[T]ree [F]ocus
 vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]here' })
 
 -- Replace is like change and then put
+vim.keymap.set('n', 'rr', ':let @r=@"<CR>dd"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'riW', ':let @r=@"<CR>diW"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'riw', ':let @r=@"<CR>diw"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'rip', ':let @r=@"<CR>dip"rP:let @"=@r<CR>', { desc = '[R]eplace' })
