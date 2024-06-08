@@ -8,7 +8,6 @@ vim.g.maplocalleader = ','
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { desc = '[T]ree [T]oggle' })
-vim.keymap.set('n', '<leader>tf', ':NvimTreeFocus<CR>', { desc = '[T]ree [F]ocus' })
 vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]here' })
 
 -- Replace is like change and then put
