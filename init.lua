@@ -60,7 +60,7 @@ function Go_log()
   -- Get the current line number (0-indexed)
   local line = vim.api.nvim_win_get_cursor(0)[1] - 1
   local seq = GenRandomSequence()
-  vim.api.nvim_buf_set_lines(buf, line + 1, line + 1, false, { 'log.Printf("tid=%s lid=' .. seq .. ' MESSAGE", tid)' })
+  vim.api.nvim_buf_set_lines(buf, line + 1, line + 1, false, { 'log.Printf("tid=%s lid=' .. seq .. ' MESSAGE\\n\\n", tid)' })
   vim.api.nvim_win_set_cursor(0, { line + 2, 32 })
 end
 vim.keymap.set('n', '<leader>gl', Go_log, { desc = '[G]o [L]og' })
