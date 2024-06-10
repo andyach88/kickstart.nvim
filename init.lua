@@ -51,7 +51,7 @@ end
 
 vim.keymap.set('n', '<leader>uu', SetRandomSequence, { desc = 'Random sequence' })
 
-vim.keymap.set('n', '<leader>gx', ':wa<CR>:!go run .<CR>', { desc = '[G]o [X]ecute' })
+vim.keymap.set('n', '<leader>gx', ':wa<CR>:vnew|read !go run .<CR>', { desc = '[G]o [X]ecute' })
 
 -- Define a function to print "hello world" to the current line in the current buffer
 function Go_log()
@@ -64,6 +64,8 @@ function Go_log()
   vim.api.nvim_win_set_cursor(0, { line + 2, 32 })
 end
 vim.keymap.set('n', '<leader>gl', Go_log, { desc = '[G]o [L]og' })
+
+vim.keymap.set('n', '<leader>bd', ':bd!<CR>', { desc = '[B]uffer [D]elete!' })
 
 -- Use capital M for creating marks and lowercase m for jumping to them
 -- Also only use marks to jump between files, so use capital letters for the marks
