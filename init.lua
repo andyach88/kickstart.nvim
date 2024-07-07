@@ -10,6 +10,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', { desc = '[T]ree [T]oggle' })
 vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]here' })
 
+-- Abreviations
+vim.cmd 'iab clg console.log();<left><left>'
+vim.cmd 'iab lff log.Fatalf("tid=%s lid=aigwfwim: %s", tid, err.Error())<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>'
+
 -- Replace is like change and then put
 vim.keymap.set('n', 'rr', ':let @r=@"<CR>dd"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', 'riW', ':let @r=@"<CR>diW"rP:let @"=@r<CR>', { desc = '[R]eplace' })
@@ -32,8 +36,6 @@ vim.keymap.set('n', 'ra<', ':let @r=@"<CR>da<"rP:let @"=@r<CR>', { desc = '[R]ep
 vim.keymap.set('n', 'ra"', ':let @r=@"<CR>da""rP:let @"=@r<CR>', { desc = '[R]eplace' })
 vim.keymap.set('n', "ra'", ':let @r=@"<CR>da\'"rP:let @"=@r<CR>', { desc = '[R]eplace' })
 
-vim.keymap.set('i', '<leader>p', '<ESC>pa', { desc = 'Put while in insert' })
-
 math.randomseed(os.time())
 function GenRandomSequence()
   local template = 'xxxxxxxx'
@@ -51,7 +53,7 @@ end
 
 vim.keymap.set('n', '<leader>uu', SetRandomSequence, { desc = 'Random sequence' })
 
-vim.keymap.set('n', '<leader>gx', ':wa<CR>:vnew|read !go run .<CR>', { desc = '[G]o [X]ecute' })
+vim.keymap.set('n', '<leader>gx', ':wa<CR>:!tsc<CR>:vnew|read !go run .<CR>', { desc = '[G]o [X]ecute' })
 
 -- Define a function to print "hello world" to the current line in the current buffer
 function Go_log()
@@ -65,7 +67,7 @@ function Go_log()
 end
 vim.keymap.set('n', '<leader>gl', Go_log, { desc = '[G]o [L]og' })
 
-vim.keymap.set('n', '<leader>bd', ':bd!<CR>', { desc = '[B]uffer [D]elete!' })
+vim.keymap.set('n', '<leader>x', ':bd!<CR>', { desc = '[B]uffer [X]lose!' })
 
 -- Use capital M for creating marks and lowercase m for jumping to them
 -- Also only use marks to jump between files, so use capital letters for the marks
