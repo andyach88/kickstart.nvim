@@ -13,6 +13,7 @@ vim.keymap.set('n', '<leader>tw', ':NvimTreeFindFile<CR>', { desc = '[T]ree [W]h
 -- Abreviations
 vim.cmd 'iab clg console.log();<left><left>'
 vim.cmd 'iab lff log.Fatalf("tid=%s lid=aigwfwim: %s", tid, err.Error())<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>'
+vim.cmd 'iab ienn if err != nil {<CR><CR>}<left><up>'
 
 -- Replace is like change and then put
 vim.keymap.set('n', 'rr', ':let @r=@"<CR>dd"rP:let @"=@r<CR>', { desc = '[R]eplace' })
@@ -384,7 +385,11 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
